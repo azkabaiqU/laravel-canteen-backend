@@ -14,54 +14,82 @@
     </div>
 
     <div class="card-body">
-        <form method="POST">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-            <div class="form-group ">
-                <label for="frist_name">First Name</label>
-                <input id="frist_name" type="text" class="form-control" name="frist_name" autofocus>
+            <!-- First Name -->
+            <div class="form-group">
+                <label for="name">First Name</label>
+                <input id="name" type="text" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" name="name" autofocus>
+                @error('name')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
-            <div class="form-group ">
+
+            <!-- Last Name -->
+            {{-- <div class="form-group">
                 <label for="last_name">Last Name</label>
-                <input id="last_name" type="text" class="form-control" name="last_name">
-            </div>
+                <input id="last_name" type="text" value="{{ old('last_name') }}" class="form-control @error('last_name') is-invalid @enderror" name="last_name">
+                @error('last_name')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div> --}}
 
-
+            <!-- Email -->
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" type="email" class="form-control" name="email">
+                <input id="email" type="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" name="email">
+                @error('email')
                 <div class="invalid-feedback">
+                    {{ $message }}
                 </div>
+                @enderror
             </div>
 
-
-            <div class="form-group ">
+            <!-- Password -->
+            <div class="form-group">
                 <label for="password" class="d-block">Password</label>
-                <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator"
-                    name="password">
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror pwstrength" data-indicator="pwindicator" name="password">
+                @error('password')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
                 <div id="pwindicator" class="pwindicator">
                     <div class="bar"></div>
                     <div class="label"></div>
                 </div>
             </div>
-            <div class="form-group ">
-                <label for="password2" class="d-block">Password Confirmation</label>
-                <input id="password2" type="password" class="form-control" name="password-confirm">
+
+            <!-- Password Confirmation -->
+            <div class="form-group">
+                <label for="password" class="d-block">Password Confirmation</label>
+                <input id="password" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation">
+                @error('password_confirmation')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
+
+            <!-- Submit Button -->
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">
                     Register
                 </button>
             </div>
-    </div>
 
-    
-    </form>
-</div>
+        </form>
+    </div>
 </div>
 @endsection
 
 @push('scripts')
-<!-- JS Libraies -->
+<!-- JS Libraries -->
 <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
 <script src="{{ asset('library/jquery.pwstrength/jquery.pwstrength.min.js') }}"></script>
 

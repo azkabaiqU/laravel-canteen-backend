@@ -19,7 +19,6 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet"
         href="{{ asset('library/bootstrap-social/bootstrap-social.css') }}">
-
     <!-- Template CSS -->
     <link rel="stylesheet"
         href="{{ asset('css/style.css') }}">
@@ -58,7 +57,7 @@
                                     autofocus>
                                     @error('email')
                                     <div class="invalid-feedback">
-                                       {{ $massage}}
+                                       {{ $message}}
                                     </div>
                                     @enderror
                             </div>
